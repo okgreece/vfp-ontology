@@ -1,0 +1,257 @@
+@prefix : <http://okfn.gr/ontology/vfp#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix vfp: <http://okfn.gr/ontology/vfp#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix obeu-measure: <http://data.openbudgets.eu/ontology/dsd/measure/> .
+@base <http://okfn.gr/ontology/vfp> .
+
+<http://okfn.gr/ontology/vfp> rdf:type owl:Ontology ;
+                               owl:versionIRI <http://okfn.gr/ontology/vfp/0.0.2> ;
+                               owl:versionInfo "Version 0.0.2"@en ;
+                               <http://purl.org/dc/terms/creator> "Evangelos Chondrokostas"@en ;
+                               <http://purl.org/dc/elements/1.1/description> "Vocabulary for describing fiscal or other financial projects."@en ;
+                               <http://purl.org/dc/elements/1.1/title> "Vocabulary of Fiscal Projects"@en .						
+								
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://okfn.gr/ontology/vfp#currency
+vfp:currency rdf:type owl:ObjectProperty ;
+             rdfs:domain vfp:Project ;
+             rdfs:isDefinedBy "http://okfn.gr/ontology/vfp" ;
+             rdfs:label "currency"@en ,
+                        "Νόμισμα"@el .
+
+
+###  http://okfn.gr/ontology/vfp#currentStatus
+vfp:currentStatus rdf:type owl:ObjectProperty ;
+                  rdfs:domain vfp:Project ;
+                  rdfs:range skos:Concept ;
+                  rdfs:comment "Current status of the project"@en ,
+                               "Τρέχουσα κατάσταση του έργου"@el ;
+                  rdfs:isDefinedBy "http://okfn.gr/ontology/vfp" ;
+                  rdfs:label "Current status"@en ,
+                             "Τρέχουσα κατάσταση"@el .
+
+
+###  http://okfn.gr/ontology/vfp#document
+vfp:document rdf:type owl:ObjectProperty ;
+             rdfs:domain vfp:Project ;
+             rdfs:range vfp:Document ;
+             rdfs:comment "Incicates the Document that is associated with the project"@en ;
+             rdfs:isDefinedBy "http://okfn.gr/ontology/vfp" ;
+             rdfs:label "document"@en .
+
+
+###  http://okfn.gr/ontology/vfp#hasPart
+vfp:hasPart rdf:type owl:ObjectProperty ;
+            owl:inverseOf vfp:partOf ;
+            rdfs:domain vfp:Project ;
+            rdfs:range vfp:Project ;
+            rdfs:comment "A project may consists of other projects"@en ;
+            rdfs:isDefinedBy "http://okfn.gr/ontology/vfp" ;
+            rdfs:label "has part"@en .
+
+
+###  http://okfn.gr/ontology/vfp#location
+vfp:location rdf:type owl:ObjectProperty ;
+             rdfs:domain vfp:Project ;
+             rdfs:range vfp:Place ;
+             rdfs:comment "Indicates the location of a project"@en ,
+                          "Τοποθεσία του έργου"@el ;
+             rdfs:isDefinedBy "http://okfn.gr/ontology/vfp" ;
+             rdfs:label "Location"@en ,
+                        "Τοποθεσία"@el .
+
+
+###  http://okfn.gr/ontology/vfp#organization
+vfp:organization rdf:type owl:ObjectProperty ;
+                 rdfs:domain vfp:Project ;
+                 rdfs:range vfp:Organization ;
+                 rdfs:comment "Indicates the Organization associated to the project"@en ;
+                 rdfs:isDefinedBy "http://okfn.gr/ontology/vfp" ;
+                 rdfs:label "organization"@en .
+
+
+###  http://okfn.gr/ontology/vfp#partOf
+vfp:partOf rdf:type owl:ObjectProperty ;
+           rdfs:domain vfp:Project ;
+           rdfs:range vfp:Project ;
+           rdfs:comment "A project may be a part of another project"@en ;
+           rdfs:isDefinedBy "http://okfn.gr/ontology/vfp" ;
+           rdfs:label "part of"@en .
+
+
+###  http://okfn.gr/ontology/vfp#url
+vfp:url rdf:type owl:ObjectProperty ;
+        rdfs:domain vfp:Project ;
+        rdfs:range vfp:Document ;
+        rdfs:comment "URL of a project"@en ;
+        rdfs:isDefinedBy "http://okfn.gr/ontology/vfp" ;
+        rdfs:label "URL"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://okfn.gr/ontology/vfp#budget
+vfp:budget rdf:type owl:DatatypeProperty ;
+           rdfs:domain vfp:Project ;
+           rdfs:range xsd:decimal ;
+           rdfs:comment "The budget amount of the project"@en ,
+                        "Το ποσό του προϋπολογισμού του έργου"@el ;
+           rdfs:isDefinedBy "http://okfn.gr/ontology/vfp" ;
+           rdfs:label "Budget"@en ,
+                      "Προϋπολογισμός"@el .
+
+
+###  http://okfn.gr/ontology/vfp#completion
+vfp:completion rdf:type owl:DatatypeProperty ;
+               rdfs:domain vfp:Project ;
+               rdfs:range xsd:decimal ;
+               rdfs:comment "Ratio of the payments to the budget"@en ,
+                            "Αναλογία  πληρωμών ως προς προϋπολογισμό"@el ;
+               rdfs:isDefinedBy "http://okfn.gr/ontology/vfp" ;
+               rdfs:label "Completion"@en ,
+                          "Ποσοστό ολοκλήρωσης"@el .
+
+
+###  http://okfn.gr/ontology/vfp#contracts
+vfp:contracts rdf:type owl:DatatypeProperty ;
+              rdfs:domain vfp:Project ;
+              rdfs:range xsd:decimal ;
+              rdfs:comment "The project's contract amount"@en ,
+                           "Το ποσό των συμβάσεων του έργου που έχουν υπογραφεί"@el ;
+              rdfs:isDefinedBy "http://okfn.gr/ontology/vfp" ;
+              rdfs:label "Contracts"@en ,
+                         "Συμβάσεις"@el .
+
+
+###  http://okfn.gr/ontology/vfp#description
+vfp:description rdf:type owl:DatatypeProperty ;
+                rdfs:domain vfp:Project ;
+                rdfs:range rdfs:Literal ;
+                rdfs:comment "Detailed description of the project"@en ,
+                             "Λεπτομερής περιγραφή του έργου"@el ;
+                rdfs:isDefinedBy "http://okfn.gr/ontology/vfp" ;
+                rdfs:label "Description"@en ,
+                           "Περιγραφή"@el .
+
+
+###  http://okfn.gr/ontology/vfp#endDate
+vfp:endDate rdf:type owl:DatatypeProperty ;
+            rdfs:domain vfp:Project ;
+            rdfs:range xsd:date ;
+            rdfs:comment "End date of the project"@en ,
+                         "Ημερομηνία λήξης του έργου"@el ;
+            rdfs:isDefinedBy "http://okfn.gr/ontology/vfp" ;
+            rdfs:label "End date"@en ,
+                       "Ημερομηνία λήξης"@el .
+
+
+###  http://okfn.gr/ontology/vfp#payments
+vfp:payments rdf:type owl:DatatypeProperty ;
+             rdfs:domain vfp:Project ;
+             rdfs:range xsd:decimal ;
+             rdfs:comment "The amount of the payments of the project"@en ,
+                          "Το ποσό των μέχρι πληρωμών που έχουν γίνει στο έργο"@el ;
+             rdfs:isDefinedBy "http://okfn.gr/ontology/vfp" ;
+             rdfs:label "Payments"@en ,
+                        "Πληρωμές"@el .
+
+
+###  http://okfn.gr/ontology/vfp#startDate
+vfp:startDate rdf:type owl:DatatypeProperty ;
+              rdfs:domain vfp:Project ;
+              rdfs:range xsd:date ;
+              rdfs:comment "Date the project started"@en ,
+                           "Ημερομηνία έναρξης του έργου"@el ;
+              rdfs:isDefinedBy "http://okfn.gr/ontology/vfp" ;
+              rdfs:label "Start date"@en ,
+                         "Ημερομηνία έναρξης"@el .
+
+
+###  http://okfn.gr/ontology/vfp#statusDate
+vfp:statusDate rdf:type owl:DatatypeProperty ;
+               rdfs:domain vfp:Project ;
+               rdfs:range xsd:date ;
+               rdfs:comment "Project status evaluation date"@en ,
+                            "Ημερομηνία εκτίμησης κατάστασης έργου"@el ;
+               rdfs:isDefinedBy "http://okfn.gr/ontology/vfp" ;
+               rdfs:label "Status date"@en ,
+                          "Ημερομηνία κατάστασης"@el .
+
+
+###  http://okfn.gr/ontology/vfp#statusReport
+vfp:statusReport rdf:type owl:DatatypeProperty ;
+                 rdfs:domain vfp:Project ;
+                 rdfs:range rdfs:Literal ;
+                 rdfs:comment "Project status evalutation report"@en ,
+                              "Εκτίμηση κατάστασης έργου"@el ;
+                 rdfs:isDefinedBy "http://okfn.gr/ontology/vfp" ;
+                 rdfs:label "Status report"@en ,
+                            "Εκτίμηση κατάστασης"@el .
+
+
+###  http://okfn.gr/ontology/vfp#title
+vfp:title rdf:type owl:DatatypeProperty ;
+          rdfs:domain vfp:Project ;
+          rdfs:range rdfs:Literal ;
+          rdfs:comment "The project's title"@en ,
+                       "Ο τίτλος του έργου"@el ;
+          rdfs:isDefinedBy "http://okfn.gr/ontology/vfp" ;
+          rdfs:label "title"@en ,
+                     "Τίτλος"@el .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://okfn.gr/ontology/vfp#Document
+vfp:Document rdf:type owl:Class ;
+             rdfs:subClassOf <http://xmlns.com/foaf/0.1/Document> ;
+             rdfs:comment "Documents, images or URLs associated with the Project"@en ,
+                          "Έγγραφα, εικόνες ή ιστοσελίδες σχετικά με το Έργο"@el ;
+             rdfs:isDefinedBy "http://okfn.gr/ontology/vfp" ;
+             rdfs:label "Document"@en ,
+                        "Έγγραφο"@el .
+
+
+###  http://okfn.gr/ontology/vfp#Organization
+vfp:Organization rdf:type owl:Class ;
+                 rdfs:subClassOf <http://xmlns.com/foaf/0.1/Organization> ;
+                 rdfs:comment "Organization associated with the Project"@en ,
+                              "Οργανισμός που σχετίζεται με το Έργο"@el ;
+                 rdfs:isDefinedBy "http://okfn.gr/ontology/vfp" ;
+                 rdfs:label "Organization"@en ,
+                            "Οργανισμός"@el .
+
+
+###  http://okfn.gr/ontology/vfp#Place
+vfp:Place rdf:type owl:Class ;
+          rdfs:subClassOf <http://dbpedia.org/ontology/Place> ;
+          rdfs:comment "Place associated with the project"@en ,
+                       "Τοποθεσία του έργου"@el ;
+          rdfs:isDefinedBy "http://okfn.gr/ontology/vfp" ;
+          rdfs:label "Document"@en ,
+                     "Έγγραφο"@el .
+
+
+###  http://okfn.gr/ontology/vfp#Project
+vfp:Project rdf:type owl:Class ;
+            rdfs:subClassOf <http://xmlns.com/foaf/0.1/Project> ;
+            rdfs:comment "Financial or fiscal Project"@en ,
+                         "Οικονομικό ή χρηματοδοτικό Έργο"@el ;
+            rdfs:isDefinedBy "http://okfn.gr/ontology/vfp" ;
+            rdfs:label "Project"@en ,
+                       "Έργο"@el .
+
+
+###  Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi
