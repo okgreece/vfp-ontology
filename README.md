@@ -1,1 +1,1 @@
-# vfp-ontology
+# VFP: Vocabulary of Fiscal Projects
