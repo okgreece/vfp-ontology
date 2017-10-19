@@ -18,11 +18,12 @@
                                                "Evangelos Chondrokostas"@en ;
                                dc:description "Vocabulary for describing fiscal or other financial projects."@en ;
                                dc:title "Vocabulary of Fiscal Projects"@en ;
-                               owl:versionInfo "0.2.0" ;
                                dcterms:modified "2017-10-19"^^xsd:date ;
+                               owl:versionInfo "0.2.0" ;
                                dcterms:issued "2017-02-05"^^xsd:date ;
                                dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
                                dc:date "2017-10-19"^^xsd:date ;
+                               dcterms:created "2017-02-05"^^xsd:date ;
                                dc:description "Λεξιλόγιο για την περιγραφή δημοσιονομικών ή άλλων οικονομικών έργων."@el .
 
 #################################################################
@@ -31,6 +32,10 @@
 
 ###  http://purl.org/dc/elements/1.1/date
 dc:date rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/created
+dcterms:created rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/terms/issued
