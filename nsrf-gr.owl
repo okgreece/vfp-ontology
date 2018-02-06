@@ -1,28 +1,30 @@
-@prefix : <http://okfn.gr/ontology/nsrf-gr#> .
+@prefix : <http://purl.org/vocab/nsrf-gr#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix vfp: <http://okfn.gr/ontology/vfp#> .
+@prefix vfp: <http://purl.org/vocab/vfp#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix nsrf-gr: <http://okfn.gr/ontology/nsrf-gr#> .
-@base <http://okfn.gr/ontology/nsrf-gr> .
+@prefix nsrf-gr: <http://purl.org/vocab/nsrf-gr#> .
+@base <http://purl.org/vocab/nsrf-gr#> .
 
-<http://okfn.gr/ontology/nsrf-gr> rdf:type owl:Ontology ;
-                                   owl:versionIRI <http://okfn.gr/ontology/nsrf-gr/0.2.0> ;
-                                   dcterms:creator "Ευάγγελος Χονδροκώστας"@el ,
-                                                   "Evangelos Chondrokostas"@en ;
-                                   dcterms:modified "2017-10-19"^^xsd:date ;
-                                   owl:versionInfo "0.2.0" ;
-                                   dc:description "Extension of VFP ontology for describing the projects of the Greek National Stratigic Reference Framework."@en ;
-                                   dcterms:issued "2017-02-05"^^xsd:date ;
-                                   dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-                                   dc:date "2017-10-19"^^xsd:date ;
-                                   dc:description "Επέκταση της οντολογίας VFP για την περιγραφή των έργων του ελληνικού Εθνικού Στρατηγικού Πλαισίου Αναφοράς."@el ;
-                                   dc:title "National Stratigic Reference Framework Greece vocabulary"@en ;
-                                   dcterms:created "2017-02-05"^^xsd:date .
+<http://purl.org/vocab/nsrf-gr#> rdf:type owl:Ontology ;
+                                  dcterms:creator "Ευάγγελος Χονδροκώστας"@el ,
+                                                  "Evangelos Chondrokostas"@en ;
+                                  owl:versionInfo "1.0.0" ;
+                                  dcterms:modified "2018-02-06"^^xsd:date ;
+                                  vann:preferredNamespacePrefix "nsrf-gr" ;
+                                  dc:description "Extension of VFP ontology for describing the projects of the Greek National Stratigic Reference Framework."@en ;
+                                  dcterms:issued "2017-02-05"^^xsd:date ;
+                                  dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+                                  dc:date "2018-02-06"^^xsd:date ;
+                                  dc:description "Επέκταση της οντολογίας VFP για την περιγραφή των έργων του ελληνικού Εθνικού Στρατηγικού Πλαισίου Αναφοράς."@el ;
+                                  vann:preferredNamespaceUri <http://purl.org/vocab/nsrf-gr#> ;
+                                  dc:title "National Stratigic Reference Framework Greece vocabulary"@en ;
+                                  dcterms:created "2017-02-05"^^xsd:date .
 
 #################################################################
 #    Annotation properties
@@ -48,6 +50,14 @@ dcterms:license rdf:type owl:AnnotationProperty .
 dcterms:modified rdf:type owl:AnnotationProperty .
 
 
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
+
+
 #################################################################
 #    Datatypes
 #################################################################
@@ -60,106 +70,122 @@ xsd:date rdf:type rdfs:Datatype .
 #    Object Properties
 #################################################################
 
-###  http://okfn.gr/ontology/nsrf-gr#body
+###  http://purl.org/vocab/vfp##hasPart
+vfp:hasPart rdf:type owl:ObjectProperty .
+
+
+###  http://purl.org/vocab/vfp##organization
+vfp:organization rdf:type owl:ObjectProperty .
+
+
+###  http://purl.org/vocab/vfp##partOf
+vfp:partOf rdf:type owl:ObjectProperty .
+
+
+###  http://purl.org/vocab/vfp##url
+vfp:url rdf:type owl:ObjectProperty .
+
+
+###  http://purl.org/vocab/nsrf-gr#body
 nsrf-gr:body rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
              rdfs:domain vfp:Project ;
              rdfs:range vfp:Organization ;
              rdfs:comment "Beneficiary of the NSRF project."@en ,
                           "Δικαιούχος του έργου ΕΣΠΑ."@el ;
-             rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+             rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
              rdfs:label "body"@en ,
                         "δικαιούχος"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#bodyType
+###  http://purl.org/vocab/nsrf-gr#bodyType
 nsrf-gr:bodyType rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
                  rdfs:domain nsrf-gr:Body ;
                  rdfs:range <http://www.w3.org/2004/02/skos/core#Concept> ;
-                 rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                 rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                  rdfs:label "body type"@en ,
                             "είδος φορέα"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#decisionAbout
+###  http://purl.org/vocab/nsrf-gr#decisionAbout
 nsrf-gr:decisionAbout rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf owl:topObjectProperty ;
                       owl:inverseOf nsrf-gr:hasDecision ;
                       rdfs:domain nsrf-gr:DecisionData ;
                       rdfs:range nsrf-gr:Expropriation ;
-                      rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                      rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                       rdfs:label "decision about"@en ,
                                  "απόφαση σχετικά"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exproOf
+###  http://purl.org/vocab/nsrf-gr#exproOf
 nsrf-gr:exproOf rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf owl:topObjectProperty ;
                 owl:inverseOf nsrf-gr:hasExpro ;
                 rdfs:comment "The project to which is part of the related expropriation."@en ,
                              "Το έργο στο οποίο ανήκει η σχετική απαλλοτρίωση."@el ;
-                rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                 rdfs:label "expro of"@en ,
                            "απαλλοτρίωση στο"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exproURL
+###  http://purl.org/vocab/nsrf-gr#exproURL
 nsrf-gr:exproURL rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf vfp:url ,
                                     owl:topObjectProperty ;
                  rdfs:domain nsrf-gr:Expropriation ;
                  rdfs:range nsrf-gr:Document ;
-                 rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                 rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                  rdfs:label "expro url"@en ,
                             "url απαλλοτρίωσης"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#fileType
+###  http://purl.org/vocab/nsrf-gr#fileType
 nsrf-gr:fileType rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
                  rdfs:domain nsrf-gr:Document ;
                  rdfs:range <http://www.w3.org/2004/02/skos/core#Concept> ;
-                 rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                 rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                  rdfs:label "file type"@en ,
                             "είδος εγγράφου"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#hasDecision
+###  http://purl.org/vocab/nsrf-gr#hasDecision
 nsrf-gr:hasDecision rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf owl:topObjectProperty ;
                     rdfs:domain nsrf-gr:Expropriation ;
                     rdfs:range nsrf-gr:DecisionData ;
-                    rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                    rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                     rdfs:label "has decision"@en ,
                                "έχει απόφαση"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#hasExpro
+###  http://purl.org/vocab/nsrf-gr#hasExpro
 nsrf-gr:hasExpro rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
                  rdfs:domain nsrf-gr:Project ;
                  rdfs:range nsrf-gr:Expropriation ;
                  rdfs:comment "The expropriation related to the project."@en ,
                               "Η απαλλοτρίωση που έχει το έργο."@el ;
-                 rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                 rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                  rdfs:label "has expropriation"@en ,
                             "έχει απαλλοτρίωση"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#hasSubproject
+###  http://purl.org/vocab/nsrf-gr#hasSubproject
 nsrf-gr:hasSubproject rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf vfp:hasPart ,
                                          owl:topObjectProperty ;
                       owl:inverseOf nsrf-gr:subprojectOf ;
                       rdfs:domain nsrf-gr:Project ;
                       rdfs:range nsrf-gr:Subproject ;
-                      rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                      rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                       rdfs:label "has subproject"@en ,
                                  "έχει υποέργο"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#implementor
+###  http://purl.org/vocab/nsrf-gr#implementor
 nsrf-gr:implementor rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf vfp:organization ,
                                        owl:topObjectProperty ;
@@ -167,463 +193,447 @@ nsrf-gr:implementor rdf:type owl:ObjectProperty ;
                     rdfs:range nsrf-gr:Body ;
                     rdfs:comment "Implementor of the subproject."@en ,
                                  "Ανάδοχος του υποέργου."@el ;
-                    rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                    rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                     rdfs:label "implementor"@en ,
                                "ανάδοχος"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#location
+###  http://purl.org/vocab/nsrf-gr#location
 nsrf-gr:location rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
                  rdfs:domain vfp:Project ;
                  rdfs:range nsrf-gr:Area ;
                  rdfs:comment "Indicates the location of a project or support-grant in Greece"@en ,
                               "Τοποθεσία του έργου ή της ενίσχυσης στην ελληνική επικράτεια"@el ;
-                 rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                 rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                  rdfs:label "location"@en ,
                             "τοποθεσία"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#operational
+###  http://purl.org/vocab/nsrf-gr#operational
 nsrf-gr:operational rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf owl:topObjectProperty ;
                     rdfs:domain vfp:Project ;
                     rdfs:range <http://www.w3.org/2004/02/skos/core#Concept> ;
                     rdfs:comment "The project is part of an operational programme"@en ,
                                  "Το έργο είναι μέρος ενός επιχειρησιακού προγράμματος"@el ;
-                    rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                    rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                     rdfs:label "operational programme"@en ,
                                "επιχειρησιακό πρόγραμμα"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#subprojectOf
+###  http://purl.org/vocab/nsrf-gr#subprojectOf
 nsrf-gr:subprojectOf rdf:type owl:ObjectProperty ;
                      rdfs:subPropertyOf vfp:partOf ,
                                         owl:topObjectProperty ;
                      rdfs:domain nsrf-gr:Subproject ;
                      rdfs:range nsrf-gr:Project ;
-                     rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                     rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                      rdfs:label "subproject of"@en ,
                                 "υποέργο του"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#thematic
+###  http://purl.org/vocab/nsrf-gr#thematic
 nsrf-gr:thematic rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
                  rdfs:domain vfp:Project ;
                  rdfs:range <http://www.w3.org/2004/02/skos/core#Concept> ;
-                 rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                 rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                  rdfs:label "thematic priority"@en ,
                             "θεματική προτεραιότητα"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#unitMeasure
+###  http://purl.org/vocab/nsrf-gr#unitMeasure
 nsrf-gr:unitMeasure rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf owl:topObjectProperty ;
                     rdfs:domain nsrf-gr:Expropriation ;
-                    rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                    rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                     rdfs:label "unit of measure"@en ,
                                "μονάδα μέτρησης"@el .
-
-
-###  http://okfn.gr/ontology/vfp#hasPart
-vfp:hasPart rdf:type owl:ObjectProperty .
-
-
-###  http://okfn.gr/ontology/vfp#organization
-vfp:organization rdf:type owl:ObjectProperty .
-
-
-###  http://okfn.gr/ontology/vfp#partOf
-vfp:partOf rdf:type owl:ObjectProperty .
-
-
-###  http://okfn.gr/ontology/vfp#url
-vfp:url rdf:type owl:ObjectProperty .
 
 
 #################################################################
 #    Data properties
 #################################################################
 
-###  http://okfn.gr/ontology/nsrf-gr#actualAuctionApproveDate
+###  http://purl.org/vocab/nsrf-gr#actualAuctionApproveDate
 nsrf-gr:actualAuctionApproveDate rdf:type owl:DatatypeProperty ;
                                  rdfs:subPropertyOf owl:topDataProperty ;
                                  rdfs:domain nsrf-gr:Subproject ;
                                  rdfs:range xsd:date ;
-                                 rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                                 rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                                  rdfs:label "actual auction approve date"@en ,
                                             "πραγματική ημερομηνία προέγκρισης δημοπράτησης"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#actualAuctionDate
+###  http://purl.org/vocab/nsrf-gr#actualAuctionDate
 nsrf-gr:actualAuctionDate rdf:type owl:DatatypeProperty ;
                           rdfs:subPropertyOf owl:topDataProperty ;
                           rdfs:domain nsrf-gr:Subproject ;
                           rdfs:range xsd:date ;
-                          rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                          rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                           rdfs:label "actual auction date"@en ,
                                      "πραγματική ημερομηνία δημοπράτησης"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#actualCompletionDate
+###  http://purl.org/vocab/nsrf-gr#actualCompletionDate
 nsrf-gr:actualCompletionDate rdf:type owl:DatatypeProperty ;
                              rdfs:subPropertyOf owl:topDataProperty ;
                              rdfs:domain nsrf-gr:Subproject ;
                              rdfs:range xsd:date ;
-                             rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                             rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                              rdfs:label "actual completion date"@en ,
                                         "Πραγματική ημερομηνία ολοκλήρωσης"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#actualContractApproveDate
+###  http://purl.org/vocab/nsrf-gr#actualContractApproveDate
 nsrf-gr:actualContractApproveDate rdf:type owl:DatatypeProperty ;
                                   rdfs:subPropertyOf owl:topDataProperty ;
                                   rdfs:domain nsrf-gr:Subproject ;
                                   rdfs:range xsd:date ;
-                                  rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                                  rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                                   rdfs:label "actualc contract approve date"@en ,
                                              "πραγματική ημερομηνία προέγκρισης υπογραφής της σύμβασης"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#actualContractDate
+###  http://purl.org/vocab/nsrf-gr#actualContractDate
 nsrf-gr:actualContractDate rdf:type owl:DatatypeProperty ;
                            rdfs:subPropertyOf owl:topDataProperty ;
                            rdfs:domain nsrf-gr:Subproject ;
                            rdfs:range xsd:date ;
-                           rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                           rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                            rdfs:label "actual contract date"@en ,
                                       "πραγματική ημερομηνία υπογραφής της σύμβασης"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#actualEntranceDate
+###  http://purl.org/vocab/nsrf-gr#actualEntranceDate
 nsrf-gr:actualEntranceDate rdf:type owl:DatatypeProperty ;
                            rdfs:subPropertyOf owl:topDataProperty ;
                            rdfs:domain nsrf-gr:Subproject ;
                            rdfs:range xsd:date ;
-                           rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                           rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                            rdfs:label "actual entrance date"@en ,
                                       "πραγματική ημερομηνία έγκρισης για χρηματοδότηση"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#actualSubmissionDate
+###  http://purl.org/vocab/nsrf-gr#actualSubmissionDate
 nsrf-gr:actualSubmissionDate rdf:type owl:DatatypeProperty ;
                              rdfs:subPropertyOf owl:topDataProperty ;
                              rdfs:domain nsrf-gr:Subproject ;
                              rdfs:range xsd:date ;
-                             rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                             rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                              rdfs:label "actual submission date"@en ,
                                         "πραγματική ημερομηνία υποβολής της πρότασης"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#bodyFax
+###  http://purl.org/vocab/nsrf-gr#bodyFax
 nsrf-gr:bodyFax rdf:type owl:DatatypeProperty ;
                 rdfs:subPropertyOf owl:topDataProperty ;
                 rdfs:domain nsrf-gr:Body ;
                 rdfs:range rdfs:Literal ;
-                rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                 rdfs:label "fax"@en ,
                            "φαξ"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#bodyRepresentative
+###  http://purl.org/vocab/nsrf-gr#bodyRepresentative
 nsrf-gr:bodyRepresentative rdf:type owl:DatatypeProperty ;
                            rdfs:subPropertyOf owl:topDataProperty ;
                            rdfs:domain nsrf-gr:Body ;
                            rdfs:range rdfs:Literal ;
-                           rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                           rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                            rdfs:label "body representative"@en ,
                                       "αντιπρόσωπος φορέα"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#countSubproject
+###  http://purl.org/vocab/nsrf-gr#countSubproject
 nsrf-gr:countSubproject rdf:type owl:DatatypeProperty ;
                         rdfs:subPropertyOf owl:topDataProperty ;
                         rdfs:domain nsrf-gr:Project ;
                         rdfs:range xsd:integer ;
-                        rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                        rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                         rdfs:label "number of subprojects"@en ,
                                    "αριθμός υποέργων"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#estimAuctionApproveDate
+###  http://purl.org/vocab/nsrf-gr#estimAuctionApproveDate
 nsrf-gr:estimAuctionApproveDate rdf:type owl:DatatypeProperty ;
                                 rdfs:subPropertyOf owl:topDataProperty ;
                                 rdfs:domain nsrf-gr:Subproject ;
                                 rdfs:range xsd:date ;
-                                rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                                rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                                 rdfs:label "estimated auction approve date"@en ,
                                            "εκτιμώμενη ημερομηνία προέγκρισης δημοπράτησης"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#estimAuctionDate
+###  http://purl.org/vocab/nsrf-gr#estimAuctionDate
 nsrf-gr:estimAuctionDate rdf:type owl:DatatypeProperty ;
                          rdfs:subPropertyOf owl:topDataProperty ;
                          rdfs:domain nsrf-gr:Subproject ;
                          rdfs:range xsd:date ;
-                         rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                         rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                          rdfs:label "estimated auction date"@en ,
                                     "εκτιμώμενη ημερομηνία δημοπράτησης"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#estimCompletionDate
+###  http://purl.org/vocab/nsrf-gr#estimCompletionDate
 nsrf-gr:estimCompletionDate rdf:type owl:DatatypeProperty ;
                             rdfs:subPropertyOf owl:topDataProperty ;
                             rdfs:domain nsrf-gr:Subproject ;
                             rdfs:range xsd:date ;
-                            rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                            rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                             rdfs:label "estimated completion date"@en ,
                                        "eκτιμώμενη ημερομηνία ολοκλήρωσης"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#estimContractApproveDate
+###  http://purl.org/vocab/nsrf-gr#estimContractApproveDate
 nsrf-gr:estimContractApproveDate rdf:type owl:DatatypeProperty ;
                                  rdfs:subPropertyOf owl:topDataProperty ;
                                  rdfs:domain nsrf-gr:Subproject ;
                                  rdfs:range xsd:date ;
-                                 rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                                 rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                                  rdfs:label "estimated contract approve date"@en ,
                                             "εκτιμώμενη ημερομηνία προέγκρισης υπογραφής της σύμβασης"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#estimContractDate
+###  http://purl.org/vocab/nsrf-gr#estimContractDate
 nsrf-gr:estimContractDate rdf:type owl:DatatypeProperty ;
                           rdfs:subPropertyOf owl:topDataProperty ;
                           rdfs:domain nsrf-gr:Subproject ;
                           rdfs:range xsd:date ;
-                          rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                          rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                           rdfs:label "estimated contract date"@en ,
                                      "εκτιμώμενη ημερομηνία υπογραφής της σύμβασης"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#estimEntranceDate
+###  http://purl.org/vocab/nsrf-gr#estimEntranceDate
 nsrf-gr:estimEntranceDate rdf:type owl:DatatypeProperty ;
                           rdfs:subPropertyOf owl:topDataProperty ;
                           rdfs:domain nsrf-gr:Subproject ;
                           rdfs:range xsd:date ;
-                          rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                          rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                           rdfs:label "estimated entrance date"@en ,
                                      "εκτιμώμενη ημερομηνία έγκρισης για χρηματοδότηση"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#estimSubmissionDate
+###  http://purl.org/vocab/nsrf-gr#estimSubmissionDate
 nsrf-gr:estimSubmissionDate rdf:type owl:DatatypeProperty ;
                             rdfs:subPropertyOf owl:topDataProperty ;
                             rdfs:domain nsrf-gr:Subproject ;
                             rdfs:range xsd:date ;
-                            rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                            rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                             rdfs:label "estimated submission date"@en ,
                                        "εκτιμόμενη ημερομηνία υποβολής της πρότασης"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#euCofinanced
+###  http://purl.org/vocab/nsrf-gr#euCofinanced
 nsrf-gr:euCofinanced rdf:type owl:DatatypeProperty ;
                      rdfs:subPropertyOf owl:topDataProperty ;
                      rdfs:domain nsrf-gr:Priorityproject ;
                      rdfs:range xsd:decimal ;
                      rdfs:comment "The amount cofunded by the European Union."@en ,
                                   "Προϋπολογισμός συγχρηματοδοτούμενος από Ε.Ε."@el ;
-                     rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                     rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                      rdfs:label "eucofinanced"@en .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exproAssignedArea
+###  http://purl.org/vocab/nsrf-gr#exproAssignedArea
 nsrf-gr:exproAssignedArea rdf:type owl:DatatypeProperty ;
                           rdfs:subPropertyOf owl:topDataProperty ;
                           rdfs:domain nsrf-gr:Expropriation ;
                           rdfs:range xsd:integer ;
-                          rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                          rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                           rdfs:label "expro assigned area"@en ,
                                      "αποδοθείσα επιφάνεια απαλλοτρίωσης"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exproBudget
+###  http://purl.org/vocab/nsrf-gr#exproBudget
 nsrf-gr:exproBudget rdf:type owl:DatatypeProperty ;
                     rdfs:subPropertyOf owl:topDataProperty ;
                     rdfs:domain nsrf-gr:Expropriation ;
                     rdfs:range xsd:decimal ;
                     rdfs:comment "The budget arising after judicial determination of the unit price or appeals thereof."@en ,
                                  "Ο προϋπολογισμός που προκύπτει ύστερα από δικαστικό καθορισμό τιμής μονάδας ή εφετείο αυτού."@el ;
-                    rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                    rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                     rdfs:label "expro budget"@en ,
                                "προϋπολογισμός απαλλοτρίωσης"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exproCompleteDate
+###  http://purl.org/vocab/nsrf-gr#exproCompleteDate
 nsrf-gr:exproCompleteDate rdf:type owl:DatatypeProperty ;
                           rdfs:subPropertyOf owl:topDataProperty ;
                           rdfs:domain nsrf-gr:Expropriation ;
                           rdfs:range xsd:date ;
                           rdfs:comment "The date on which the assignment of expropriated areas to the implementation body was completed."@en ,
                                        "Η ημερομηνία κατά την οποία ολοκληρώθηκε η απόδοση των απαλλοτριωμένων εκτάσεων στον Κύριο του έργου (Φορέας υλοποίησης)."@el ;
-                          rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                          rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                           rdfs:label "expro complete date"@en ,
                                      "ημερομηνία ολοκλήρωσης απαλλοτρίωσης"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exproCompletion
+###  http://purl.org/vocab/nsrf-gr#exproCompletion
 nsrf-gr:exproCompletion rdf:type owl:DatatypeProperty ;
                         rdfs:subPropertyOf owl:topDataProperty ;
                         rdfs:domain nsrf-gr:Expropriation ;
                         rdfs:range xsd:decimal ;
                         rdfs:comment "The ratio of the Assigned Area to the Declared Area."@en ,
                                      "Η αναλογία της αποδοθείσας επιφάνειας στην κηρυχθείσα."@el ;
-                        rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                        rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                         rdfs:label "expro completion ratio"@en ,
                                    "ποσοστό ολοκλήρωσης απαλλοτρίωσης"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exproCountDecision
+###  http://purl.org/vocab/nsrf-gr#exproCountDecision
 nsrf-gr:exproCountDecision rdf:type owl:DatatypeProperty ;
                            rdfs:subPropertyOf owl:topDataProperty ;
                            rdfs:domain nsrf-gr:Expropriation ;
                            rdfs:range xsd:integer ;
-                           rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                           rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                            rdfs:label "expro count decision"@en ,
                                       "αριθμός αποφάσεων απαλλοτρίωσης"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exproDeclaredArea
+###  http://purl.org/vocab/nsrf-gr#exproDeclaredArea
 nsrf-gr:exproDeclaredArea rdf:type owl:DatatypeProperty ;
                           rdfs:subPropertyOf owl:topDataProperty ;
                           rdfs:domain nsrf-gr:Expropriation ;
                           rdfs:range xsd:integer ;
-                          rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                          rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                           rdfs:label "expro declared area"@en ,
                                      "κηρυχθείσα επιφάνεια απαλλοτρίωσης"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exproEstimatedArea
+###  http://purl.org/vocab/nsrf-gr#exproEstimatedArea
 nsrf-gr:exproEstimatedArea rdf:type owl:DatatypeProperty ;
                            rdfs:subPropertyOf owl:topDataProperty ;
                            rdfs:domain nsrf-gr:Expropriation ;
                            rdfs:range xsd:integer ;
-                           rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                           rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                            rdfs:label "expro estimated area"@en ,
                                       "εκτιμώμενη επιφάνεια προς απαλλοτρίωση"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exproFirstDate
+###  http://purl.org/vocab/nsrf-gr#exproFirstDate
 nsrf-gr:exproFirstDate rdf:type owl:DatatypeProperty ;
                        rdfs:subPropertyOf owl:topDataProperty ;
                        rdfs:domain nsrf-gr:Expropriation ;
                        rdfs:range xsd:date ;
                        rdfs:comment "The declaration date of the first in a series of decisions about the expropriation of needed areas in order to implement the project."@en ,
                                     "Η ημερομηνία κήρυξης της πρώτης από μια σειρά αποφάσεων για την απαλλοτρίωση των απαραίτητων εκτάσεων για την υλοποίηση του έργου."@el ;
-                       rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                       rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                        rdfs:label "1η απόφαση κήρυξης"@el ,
                                   "expro first date"@en .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exproInitialBudget
+###  http://purl.org/vocab/nsrf-gr#exproInitialBudget
 nsrf-gr:exproInitialBudget rdf:type owl:DatatypeProperty ;
                            rdfs:subPropertyOf owl:topDataProperty ;
                            rdfs:domain nsrf-gr:Expropriation ;
                            rdfs:range xsd:decimal ;
                            rdfs:comment "The finalized budget based on the approved cadastral study."@en ,
                                         "Ο προϋπολογισμός που διαμορφώνεται στην εγκεκριμένη μελέτη κτηματολογίου."@el ;
-                           rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                           rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                            rdfs:label "expro initial budget"@en ,
                                       "αρχικός προϋπολογισμός απαλλοτρίωσης"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exproLastUpdate
+###  http://purl.org/vocab/nsrf-gr#exproLastUpdate
 nsrf-gr:exproLastUpdate rdf:type owl:DatatypeProperty ;
                         rdfs:subPropertyOf owl:topDataProperty ;
                         rdfs:domain nsrf-gr:Expropriation ;
                         rdfs:range xsd:date ;
                         rdfs:comment "Last update."@en ,
                                      "Τελευταία ενημέρωση."@el ;
-                        rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                        rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                         rdfs:label "expro last update" .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exproOrigAA
+###  http://purl.org/vocab/nsrf-gr#exproOrigAA
 nsrf-gr:exproOrigAA rdf:type owl:DatatypeProperty ;
                     rdfs:subPropertyOf owl:topDataProperty ;
                     rdfs:domain nsrf-gr:DecisionData ;
                     rdfs:range xsd:integer ;
                     rdfs:comment "Decision number."@en ,
                                  "ΑΑ απόφασης."@el ;
-                    rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                    rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                     rdfs:label "expro orig aa" .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exproPayments
+###  http://purl.org/vocab/nsrf-gr#exproPayments
 nsrf-gr:exproPayments rdf:type owl:DatatypeProperty ;
                       rdfs:subPropertyOf owl:topDataProperty ;
                       rdfs:domain nsrf-gr:Expropriation ;
                       rdfs:range xsd:decimal ;
                       rdfs:comment "Amounts paid to requisitions beneficiaries or submitted to the Consignment Deposits and Loans Fund in the name of expropriation beneficiaries."@en ,
                                    "Ποσά που πληρώθηκαν σε δικαιούχους επιτάξεων ή παρακατατέθηκαν στο Ταμείο Παρακαταθηκών & Δανείων στο όνομα δικαιούχων απαλλοτριώσεων."@el ;
-                      rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                      rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                       rdfs:label "expro payments"@en ,
                                  "πληρωμές απαλλοτρίωσης"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exproTitle
+###  http://purl.org/vocab/nsrf-gr#exproTitle
 nsrf-gr:exproTitle rdf:type owl:DatatypeProperty ;
                    rdfs:subPropertyOf owl:topDataProperty ;
                    rdfs:domain nsrf-gr:Expropriation ;
                    rdfs:range rdfs:Literal ;
                    rdfs:comment "Ο τίτλος του έργου με τον οποίο συνδέονται οι απαλοτριώσεις"@el ;
-                   rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                   rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                    rdfs:label "expro title"@en ,
                               "τίτλος απαλοτρίωσης"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exproaaStadioy
+###  http://purl.org/vocab/nsrf-gr#exproaaStadioy
 nsrf-gr:exproaaStadioy rdf:type owl:DatatypeProperty ;
                        rdfs:subPropertyOf owl:topDataProperty ;
                        rdfs:domain nsrf-gr:DecisionData ;
                        rdfs:range xsd:integer ;
-                       rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                       rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                        rdfs:label "expro stage number"@en .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exproapodEpifaneia
+###  http://purl.org/vocab/nsrf-gr#exproapodEpifaneia
 nsrf-gr:exproapodEpifaneia rdf:type owl:DatatypeProperty ;
                            rdfs:subPropertyOf owl:topDataProperty ;
                            rdfs:domain nsrf-gr:DecisionData ;
                            rdfs:range xsd:decimal ;
-                           rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                           rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                            rdfs:label "expro assigned area"@en .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exproarProtok
+###  http://purl.org/vocab/nsrf-gr#exproarProtok
 nsrf-gr:exproarProtok rdf:type owl:DatatypeProperty ;
                       rdfs:subPropertyOf owl:topDataProperty ;
                       rdfs:domain nsrf-gr:DecisionData ;
                       rdfs:range rdfs:Literal ;
                       rdfs:comment "Declaration decision's protocol."@en ,
                                    "Αριθμός πρωτοκόλλου απόφασης κήρυξης."@el ;
-                      rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                      rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                       rdfs:label "expro protocol number"@en ,
                                  "αριθμός πρωτοκόλλου"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exproeidosApof
+###  http://purl.org/vocab/nsrf-gr#exproeidosApof
 nsrf-gr:exproeidosApof rdf:type owl:DatatypeProperty ;
                        rdfs:subPropertyOf owl:topDataProperty ;
                        rdfs:domain nsrf-gr:DecisionData ;
                        rdfs:range rdfs:Literal ;
                        rdfs:comment "Land procurement procedure type."@en ,
                                     "Είδος διαδικασίας απόκτησης γης."@el ;
-                       rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                       rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                        rdfs:label "expro eidos apof"@en .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exproepikProyp
+###  http://purl.org/vocab/nsrf-gr#exproepikProyp
 nsrf-gr:exproepikProyp rdf:type owl:DatatypeProperty ;
                        rdfs:subPropertyOf owl:topDataProperty ;
                        rdfs:domain nsrf-gr:DecisionData ;
                        rdfs:range xsd:decimal ;
                        rdfs:comment "Updated budget."@en ;
-                       rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                       rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                        rdfs:label "expro epik proyp"@en .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exprofekDate
+###  http://purl.org/vocab/nsrf-gr#exprofekDate
 nsrf-gr:exprofekDate rdf:type owl:DatatypeProperty ;
                      rdfs:subPropertyOf owl:topDataProperty ;
                      rdfs:domain nsrf-gr:DecisionData ;
@@ -631,136 +641,136 @@ nsrf-gr:exprofekDate rdf:type owl:DatatypeProperty ;
                      rdfs:comment "Government Gazette Date"@en ,
                                   "expro fek date"@en ,
                                   "Ημερομηνία έκδοσης ΦΕΚ"@el ;
-                     rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" .
+                     rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exprofekTitle
+###  http://purl.org/vocab/nsrf-gr#exprofekTitle
 nsrf-gr:exprofekTitle rdf:type owl:DatatypeProperty ;
                       rdfs:subPropertyOf owl:topDataProperty ;
                       rdfs:domain nsrf-gr:DecisionData ;
                       rdfs:range rdfs:Literal ;
                       rdfs:comment "Τίτλος ΦΕΚ"@el ;
                       rdfs:isDefinedBy "expro fek title" ,
-                                       "http://okfn.gr/ontology/nsrf-gr" ;
+                                       "http://purl.org/vocab/nsrf-gr#" ;
                       rdfs:label "Government Gazette Title."@en .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exprofekcomb
+###  http://purl.org/vocab/nsrf-gr#exprofekcomb
 nsrf-gr:exprofekcomb rdf:type owl:DatatypeProperty ;
                      rdfs:subPropertyOf owl:topDataProperty ;
                      rdfs:domain nsrf-gr:DecisionData ;
                      rdfs:range rdfs:Literal ;
                      rdfs:comment "Government Gazette issue no. and date."@en ,
                                   "Αριθμός & ημ/νία ΦΕΚ κήρυξης."@el ;
-                     rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                     rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                      rdfs:label "expro fek comb" .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exprohmerStadioy
+###  http://purl.org/vocab/nsrf-gr#exprohmerStadioy
 nsrf-gr:exprohmerStadioy rdf:type owl:DatatypeProperty ;
                          rdfs:subPropertyOf owl:topDataProperty ;
                          rdfs:domain nsrf-gr:DecisionData ;
                          rdfs:range xsd:date ;
                          rdfs:comment "Stage date."@en ,
                                       "Ημερομηνία σταδίου."@el ;
-                         rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                         rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                          rdfs:label "expro hmer stadioy" .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exprokodStadioy
+###  http://purl.org/vocab/nsrf-gr#exprokodStadioy
 nsrf-gr:exprokodStadioy rdf:type owl:DatatypeProperty ;
                         rdfs:subPropertyOf owl:topDataProperty ;
                         rdfs:domain nsrf-gr:DecisionData ;
                         rdfs:range rdfs:Literal ;
                         rdfs:comment "Stage code."@en ,
                                      "Κωδικός σταδίου."@el ;
-                        rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                        rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                         rdfs:label "expro kod stadioy" .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exprokyrEpif
+###  http://purl.org/vocab/nsrf-gr#exprokyrEpif
 nsrf-gr:exprokyrEpif rdf:type owl:DatatypeProperty ;
                      rdfs:subPropertyOf owl:topDataProperty ;
                      rdfs:domain nsrf-gr:DecisionData ;
                      rdfs:range xsd:decimal ;
                      rdfs:comment "Declared area."@en ,
                                   "Κηρυχθείσα επιφάνεια."@el ;
-                     rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                     rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                      rdfs:label "expro kyr epif" .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exproperStadioy
+###  http://purl.org/vocab/nsrf-gr#exproperStadioy
 nsrf-gr:exproperStadioy rdf:type owl:DatatypeProperty ;
                         rdfs:subPropertyOf owl:topDataProperty ;
                         rdfs:domain nsrf-gr:DecisionData ;
                         rdfs:range rdfs:Literal ;
                         rdfs:comment "Current progress stage."@en ,
                                      "Τρέχον στάδιο εξέλιξης."@el ;
-                        rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                        rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                         rdfs:label "expro per stadioy" .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exproplaisio
+###  http://purl.org/vocab/nsrf-gr#exproplaisio
 nsrf-gr:exproplaisio rdf:type owl:DatatypeProperty ;
                      rdfs:subPropertyOf owl:topDataProperty ;
                      rdfs:domain nsrf-gr:DecisionData ;
                      rdfs:range rdfs:Literal ;
                      rdfs:comment "Regulatory framework."@en ,
                                   "Θεσμικό πλαίσιο."@el ;
-                     rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                     rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                      rdfs:label "expro plaisio" .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exproposo
+###  http://purl.org/vocab/nsrf-gr#exproposo
 nsrf-gr:exproposo rdf:type owl:DatatypeProperty ;
                   rdfs:subPropertyOf owl:topDataProperty ;
                   rdfs:domain nsrf-gr:DecisionData ;
                   rdfs:range xsd:decimal ;
                   rdfs:comment "Payments"@en ,
                                "Πληρωμές"@el ;
-                  rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                  rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                   rdfs:label "expro poso" .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exproprevStages
+###  http://purl.org/vocab/nsrf-gr#exproprevStages
 nsrf-gr:exproprevStages rdf:type owl:DatatypeProperty ;
                         rdfs:subPropertyOf owl:topDataProperty ;
                         rdfs:domain nsrf-gr:DecisionData ;
                         rdfs:range rdfs:Literal ;
                         rdfs:comment "Previous stages of the expropriation."@en ,
                                      "Προηγούμενα στάδια απαλλοτρίωσης."@el ;
-                        rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                        rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                         rdfs:label "expro prev stages" .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#exprosynProyp
+###  http://purl.org/vocab/nsrf-gr#exprosynProyp
 nsrf-gr:exprosynProyp rdf:type owl:DatatypeProperty ;
                       rdfs:subPropertyOf owl:topDataProperty ;
                       rdfs:domain nsrf-gr:DecisionData ;
                       rdfs:range xsd:decimal ;
                       rdfs:comment "Initial budget"@en ,
                                    "Αρχικός προϋπολογισμός"@el ;
-                      rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                      rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                       rdfs:label "expro syn proyp" .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#includedProjects
+###  http://purl.org/vocab/nsrf-gr#includedProjects
 nsrf-gr:includedProjects rdf:type owl:DatatypeProperty ;
                          rdfs:subPropertyOf owl:topDataProperty ;
                          rdfs:domain nsrf-gr:Priorityproject ;
                          rdfs:range xsd:integer ;
                          rdfs:comment "Number of included projects in the priority project" ,
                                       "Αριθμός έργων που περιέρχονται στο έργο προτεραιότητας"@el ;
-                         rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                         rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                          rdfs:label "included projects"@en .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#subprojID
+###  http://purl.org/vocab/nsrf-gr#subprojID
 nsrf-gr:subprojID rdf:type owl:DatatypeProperty ;
                   rdfs:subPropertyOf owl:topDataProperty ;
                   rdfs:domain nsrf-gr:Subproject ;
                   rdfs:range xsd:integer ;
-                  rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                  rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                   rdfs:label "subproject id"@en ,
                              "κωδικός υποέργου"@el .
 
@@ -769,110 +779,110 @@ nsrf-gr:subprojID rdf:type owl:DatatypeProperty ;
 #    Classes
 #################################################################
 
-###  http://okfn.gr/ontology/nsrf-gr#Area
+###  http://purl.org/vocab/vfp##Document
+vfp:Document rdf:type owl:Class .
+
+
+###  http://purl.org/vocab/vfp##Organization
+vfp:Organization rdf:type owl:Class .
+
+
+###  http://purl.org/vocab/vfp##Place
+vfp:Place rdf:type owl:Class .
+
+
+###  http://purl.org/vocab/vfp##Project
+vfp:Project rdf:type owl:Class .
+
+
+###  http://purl.org/vocab/nsrf-gr#Area
 nsrf-gr:Area rdf:type owl:Class ;
              rdfs:subClassOf vfp:Place ;
              rdfs:comment "The geographical area where the NSRF project is located/underway. It can be a region or a prefecture or a municipality."@en ,
                           "Η γεωγραφική περιοχή στην οποία βρίσκεται ή πραγματοποιείται το έργο ΕΣΠΑ. Μπορεί να είναι Περιφέρεια, Νομαρχία ή Δήμος."@el ;
-             rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+             rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
              rdfs:label "Area"@en ,
                         "Περιοχή"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#Body
+###  http://purl.org/vocab/nsrf-gr#Body
 nsrf-gr:Body rdf:type owl:Class ;
              rdfs:subClassOf vfp:Organization ;
              rdfs:comment "Body or bodies associated with the NSRF project."@en ,
                           "Φορέας ή φορείς που σχετίζονται με το έργο του ΕΣΠΑ."@el ;
-             rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+             rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
              rdfs:label "Body"@en ,
                         "Εμπλεκόμενος Φορέας"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#DecisionData
+###  http://purl.org/vocab/nsrf-gr#DecisionData
 nsrf-gr:DecisionData rdf:type owl:Class ;
                      rdfs:subClassOf nsrf-gr:Document ;
                      rdfs:comment "Expropriations are implemented based on one or more Decisions."@en ,
                                   "Οι απαλλοτριώσεις υλοποιούνται βάσει μίας ή περισσότερων Αποφάσεων"@el ;
-                     rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                     rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                      rdfs:label "Decision Data"@en ,
                                 "Στοιχεία Αποφάσεων"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#Document
+###  http://purl.org/vocab/nsrf-gr#Document
 nsrf-gr:Document rdf:type owl:Class ;
                  rdfs:subClassOf vfp:Document ;
                  rdfs:comment "Documents, images or URLs associated with the NSRF project."@en ,
                               "Έγγραφα, εικόνες ή ιστοσελίδες σχετικά με το έργο του ΕΣΠΑ."@el ;
-                 rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                 rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                  rdfs:label "Document"@en ,
                             "Έγγραφο"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#Expropriation
+###  http://purl.org/vocab/nsrf-gr#Expropriation
 nsrf-gr:Expropriation rdf:type owl:Class ;
                       rdfs:subClassOf vfp:Project ;
                       rdfs:comment "Obligatory, according to the law and based on a defined compensation, acquisition of one’s property by the state, for reasons of public necessity or utility."@en ,
                                    "Αναγκαστική, σύμφωνη με το νόμο και με καθορισμένη αποζημίωση, εξαγορά από το κράτος της ακίνητης περιουσίας κάποιου, για λόγους δημόσιας ανάγκης ή ωφέλειας."@el ;
-                      rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                      rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                       rdfs:label "Expropriation"@en ,
                                  "Απαλλοτρίωση"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#Priorityproject
+###  http://purl.org/vocab/nsrf-gr#Priorityproject
 nsrf-gr:Priorityproject rdf:type owl:Class ;
                         rdfs:subClassOf vfp:Project ;
                         rdfs:comment "The selection of 181 projects that was done by the greek authorities in cooperation with the qualified European Commission Services, based on criteria related to the maturity, size and importance of their social and economic impact."@en ,
                                      "Η επιλογή 181 έργων που έγινε από τις ελληνικές αρχές σε συνεργασία με τις αρμόδιες Υπηρεσίες της Ευρωπαϊκής Επιτροπής και με βάση κριτήρια που σχετίζονται με την ωριμότητα, το μέγεθος και τη σημασία των κοινωνικών και οικονομικών επιπτώσεών τους."@el ;
-                        rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                        rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                         rdfs:label "Priority Project"@en ,
                                    "Έργο Προτεραιότητας"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#Project
+###  http://purl.org/vocab/nsrf-gr#Project
 nsrf-gr:Project rdf:type owl:Class ;
                 rdfs:subClassOf vfp:Project ;
                 rdfs:comment "A group of activities aiming at the realization of a functionally complete and distinct object / result. The selection of every project is made by the Managing Authority of an Operational Programme or an intermediate body that is for this purpose designated. Allocation of resources to projects is done after evaluation according to specific and predefined criteria. The project is implemented by one or more entities called Beneficiaries (public or private organisation, body or enterprise). When the Beneficiary is a public body, the projects are implemented either by contractors selected through a public call for tender or by the public body’s own means."@en ,
                              "Έργο είναι ομάδα δραστηριοτήτων που αποσκοπεί στην υλοποίηση ενός ολοκληρωμένου και λειτουργικά αυτοτελούς αντικειμένου / αποτελέσματος. Κάθε έργο επιλέγεται από την Διαχειριστική Αρχή του Επιχειρησιακού Προγράμματος σύμφωνα με συγκεκριμένα κριτήρια. Το έργο υλοποιείται από έναν ή περισσότερους φορείς που ονομάζονται Δικαιούχοι (δημόσιος ή ιδιωτικός οργανισμός, φορέας ή επιχείρηση). Στην περίπτωση που ο δικαιούχος είναι δημόσιος φορέας τα έργα υλοποιούνται είτε από αναδόχους που επιλέγονται με δημόσιο διαγωνισμό είτε με ίδια μέσα του φορέα (αυτεπιστασία)."@el ;
-                rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                 rdfs:label "Project"@en ,
                            "Έργο"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#Subproject
+###  http://purl.org/vocab/nsrf-gr#Subproject
 nsrf-gr:Subproject rdf:type owl:Class ;
                    rdfs:subClassOf vfp:Project ;
                    rdfs:comment "Part of a Project that corresponds to the implementation of a distinct part of the total physical object and is reflected either in a corresponding legal commitment or in the decision for the implementation by own means, meaning the implementation of the physical object of the sub-project by the implementation body."@en ,
                                 "Μέρος Έργου το οποίο αντιστοιχεί στην υλοποίηση διακριτού τμήματος του συνολικού φυσικού αντικειμένου και αποτυπώνεται είτε σε αντίστοιχη σύμβαση, είτε έχει τη μορφή της αυτεπιστασίας, δηλαδή της εκτέλεσης του φυσικού αντικειμένου του υποέργου από το φορέα υλοποίησης."@el ;
-                   rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                   rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                    rdfs:label "Subproject"@en ,
                               "Υποέργο"@el .
 
 
-###  http://okfn.gr/ontology/nsrf-gr#Support-grant
+###  http://purl.org/vocab/nsrf-gr#Support-grant
 nsrf-gr:Support-grant rdf:type owl:Class ;
                       rdfs:subClassOf vfp:Project ;
                       rdfs:comment "State aid is a European Commission term which refers to an advantage in any form whatsoever conferred on a selective basis to organisations involved in economic activity private or public ('undertakings') by national public authorities with the potential to distort competition and affect trade between member states of the European Union. The advantage can take different forms of assistance including the direct transfer of resources, such as grants and soft loans, and also indirect assistance - for example, relief from charges that an undertaking normally has to bear, such as a tax exemption or the provision of services, loans, at a favourable rate."@en ,
                                    "Η επιλεκτική ενίσχυση από το κράτος προς φορείς που ασκούν οικονομική δραστηριότητα (ιδιωτικούς ή δημόσιους), η οποία επηρεάζει τον ανταγωνισμό σε Ευρωπαϊκό επίπεδο. Η ενίσχυση μπορεί να έχει τη μορφή επιχορήγησης, φοροαπαλλαγής, εγγύησης, παραχώρησης χρήσης δημόσιας περιουσίας κ.α."@el ;
-                      rdfs:isDefinedBy "http://okfn.gr/ontology/nsrf-gr" ;
+                      rdfs:isDefinedBy "http://purl.org/vocab/nsrf-gr#" ;
                       rdfs:label "Support-grant"@en ,
                                  "Ενισχύση-επιδότηση"@el .
-
-
-###  http://okfn.gr/ontology/vfp#Document
-vfp:Document rdf:type owl:Class .
-
-
-###  http://okfn.gr/ontology/vfp#Organization
-vfp:Organization rdf:type owl:Class .
-
-
-###  http://okfn.gr/ontology/vfp#Place
-vfp:Place rdf:type owl:Class .
-
-
-###  http://okfn.gr/ontology/vfp#Project
-vfp:Project rdf:type owl:Class .
 
 
 ###  http://www.w3.org/2004/02/skos/core#Concept
