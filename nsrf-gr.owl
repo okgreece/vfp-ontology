@@ -17,13 +17,13 @@
                                   owl:versionInfo "1.0.0" ;
                                   dcterms:modified "2018-02-06"^^xsd:date ;
                                   vann:preferredNamespacePrefix "nsrf-gr" ;
-                                  dc:description "Extension of VFP ontology for describing the projects of the Greek National Stratigic Reference Framework."@en ;
+                                  dc:description "Extension of VFP ontology for describing the projects of the Greek National Strategic Reference Framework."@en ;
                                   dcterms:issued "2017-02-05"^^xsd:date ;
                                   dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
                                   dc:date "2018-02-06"^^xsd:date ;
                                   dc:description "Επέκταση της οντολογίας VFP για την περιγραφή των έργων του ελληνικού Εθνικού Στρατηγικού Πλαισίου Αναφοράς."@el ;
                                   vann:preferredNamespaceUri <http://purl.org/vocab/nsrf-gr#> ;
-                                  dc:title "National Stratigic Reference Framework Greece vocabulary"@en ;
+                                  dc:title "National Strategic Reference Framework Greece vocabulary"@en ;
                                   dcterms:created "2017-02-05"^^xsd:date .
 
 #################################################################
