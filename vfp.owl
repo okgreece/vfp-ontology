@@ -6,24 +6,28 @@
 @prefix vfp: <http://data.openbudgets.gr/ontology/vfp#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix foaf: <http://xmlns.com/foaf/spec/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
+@prefix vcard: <https://www.w3.org/TR/vcard-rdf/> .
+@prefix schema: <http://schema.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @base <http://purl.org/vocab/vfp#> .
 
 <http://purl.org/vocab/vfp#> rdf:type owl:Ontology ;
-                              dcterms:creator "Ευάγγελος Χονδροκώστας"@el ,
-                                              "Evangelos Chondrokostas"@en ;
+                              dcterms:modified "2018-03-02"^^xsd:date ;
                               dc:description "Vocabulary for describing fiscal or other financial projects."@en ;
-                              dc:title "Vocabulary of Fiscal Projects"@en ;
-                              owl:versionInfo "1.0.0" ;
-                              dcterms:modified "2018-02-06"^^xsd:date ;
-                              vann:preferredNamespaceUri <http://purl.org/vocab/vfp#> ;
+                              dcterms:creator "https://www.linkedin.com/in/evangelos-chondrokostas-5647a493/"@el ,
+                                              "https://www.linkedin.com/in/evangelos-chondrokostas-5647a493/"@en ;
+                              owl:versionInfo "1.1.0" ;
+                              schema:contributor "https://www.linkedin.com/in/charalampos-bratsas-7870529/"@en ;
                               dcterms:issued "2017-02-05"^^xsd:date ;
+                              dc:title "Vocabulary of Fiscal Projects" ;
                               dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-                              dc:date "2018-02-06"^^xsd:date ;
+                              vann:preferredNamespacePrefix "vfp" ;
+                              schema:contributor "https://www.linkedin.com/in/charalampos-bratsas-7870529/"@el ;
+                              vann:preferredNamespaceUri "http://purl.org/vocab/vfp#" ;
                               dcterms:created "2017-02-05"^^xsd:date ;
                               dc:description "Λεξιλόγιο για την περιγραφή δημοσιονομικών ή άλλων οικονομικών έργων."@el .
 
@@ -59,6 +63,10 @@ vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
 vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 
 
+###  http://schema.org/contributor
+schema:contributor rdf:type owl:AnnotationProperty .
+
+
 #################################################################
 #    Datatypes
 #################################################################
@@ -74,7 +82,7 @@ xsd:date rdf:type rdfs:Datatype .
 ###  http://purl.org/vocab/vfp#currency
 :currency rdf:type owl:ObjectProperty ;
           rdfs:domain :Project ;
-          rdfs:isDefinedBy "http://purl.org/vocab/vfp#" ;
+          rdfs:isDefinedBy <http://purl.org/vocab/vfp#> ;
           rdfs:label "currency"@en ,
                      "νόμισμα"@el .
 
@@ -85,7 +93,7 @@ xsd:date rdf:type rdfs:Datatype .
                rdfs:range skos:Concept ;
                rdfs:comment "Current status of the project"@en ,
                             "Τρέχουσα κατάσταση του έργου"@el ;
-               rdfs:isDefinedBy "http://purl.org/vocab/vfp#" ;
+               rdfs:isDefinedBy <http://purl.org/vocab/vfp#> ;
                rdfs:label "current status"@en ,
                           "τρέχουσα κατάσταση"@el .
 
@@ -94,9 +102,11 @@ xsd:date rdf:type rdfs:Datatype .
 :document rdf:type owl:ObjectProperty ;
           rdfs:domain :Project ;
           rdfs:range :Document ;
-          rdfs:comment "Incicates the Document that is associated with the project"@en ;
-          rdfs:isDefinedBy "http://purl.org/vocab/vfp#" ;
-          rdfs:label "document"@en .
+          rdfs:comment "Indicates a document that is associated with the project"@en ,
+                       "Υποδεικνύει ένα έγγραφο που σχετίζεται με το έργο"@el ;
+          rdfs:isDefinedBy <http://purl.org/vocab/vfp#> ;
+          rdfs:label "document"@en ,
+                     "έγγραφο"@el .
 
 
 ###  http://purl.org/vocab/vfp#hasPart
@@ -106,8 +116,9 @@ xsd:date rdf:type rdfs:Datatype .
          rdfs:range :Project ;
          rdfs:comment "A project may consists of other projects"@en ,
                       "Ένα έργο μπορεί να αποτελείται από άλλα έργα"@el ;
-         rdfs:isDefinedBy "http://purl.org/vocab/vfp#" ;
-         rdfs:label "has part"@en .
+         rdfs:isDefinedBy <http://purl.org/vocab/vfp#> ;
+         rdfs:label "has part"@en ,
+                    "αποτελείται από"@el .
 
 
 ###  http://purl.org/vocab/vfp#location
@@ -115,19 +126,21 @@ xsd:date rdf:type rdfs:Datatype .
           rdfs:domain :Project ;
           rdfs:range :Place ;
           rdfs:comment "Indicates the location of a project"@en ,
-                       "Τοποθεσία του έργου"@el ;
-          rdfs:isDefinedBy "http://purl.org/vocab/vfp#" ;
+                       "Υποδεικνύει την τοποθεσία του έργου"@el ;
+          rdfs:isDefinedBy <http://purl.org/vocab/vfp#> ;
           rdfs:label "location"@en ,
-                     "Τοποθεσία"@el .
+                     "τοποθεσία"@el .
 
 
 ###  http://purl.org/vocab/vfp#organization
 :organization rdf:type owl:ObjectProperty ;
               rdfs:domain :Project ;
               rdfs:range :Organization ;
-              rdfs:comment "Indicates the Organization associated to the project"@en ;
-              rdfs:isDefinedBy "http://purl.org/vocab/vfp#" ;
-              rdfs:label "organization"@en .
+              rdfs:comment "Indicates an organization associated to the project"@en ,
+                           "Υποδεικνύει έναν οργανισμό που σχετίζεται με το έργο"@el ;
+              rdfs:isDefinedBy <http://purl.org/vocab/vfp#> ;
+              rdfs:label "organization"@en ,
+                         "οργανισμός"@el .
 
 
 ###  http://purl.org/vocab/vfp#partOf
@@ -136,17 +149,20 @@ xsd:date rdf:type rdfs:Datatype .
         rdfs:range :Project ;
         rdfs:comment "A project may be a part of another project"@en ,
                      "Ένα έργο μπορεί να αποτελεί μέρος ενός άλλου έργου"@el ;
-        rdfs:isDefinedBy "http://purl.org/vocab/vfp#" ;
-        rdfs:label "part of"@en .
+        rdfs:isDefinedBy <http://purl.org/vocab/vfp#> ;
+        rdfs:label "part of"@en ,
+                   "μέρος του"@el .
 
 
 ###  http://purl.org/vocab/vfp#url
 :url rdf:type owl:ObjectProperty ;
      rdfs:domain :Project ;
      rdfs:range :Document ;
-     rdfs:comment "URL of a project"@en ;
-     rdfs:isDefinedBy "http://purl.org/vocab/vfp#" ;
-     rdfs:label "url"@en .
+     rdfs:comment "URL of a project"@en ,
+                  "Διεύθυσνη URL ενός έργου"@el ;
+     rdfs:isDefinedBy <http://purl.org/vocab/vfp#> ;
+     rdfs:label "url"@el ,
+                "url"@en .
 
 
 #################################################################
@@ -159,9 +175,9 @@ xsd:date rdf:type rdfs:Datatype .
         rdfs:range xsd:decimal ;
         rdfs:comment "The budget amount of the project"@en ,
                      "Το ποσό του προϋπολογισμού του έργου"@el ;
-        rdfs:isDefinedBy "http://purl.org/vocab/vfp#" ;
-        rdfs:label "Budget"@en ,
-                   "Προϋπολογισμός"@el .
+        rdfs:isDefinedBy <http://purl.org/vocab/vfp#> ;
+        rdfs:label "budget"@en ,
+                   "προϋπολογισμός"@el .
 
 
 ###  http://purl.org/vocab/vfp#completion
@@ -169,10 +185,10 @@ xsd:date rdf:type rdfs:Datatype .
             rdfs:domain :Project ;
             rdfs:range xsd:decimal ;
             rdfs:comment "Ratio of the payments to the budget"@en ,
-                         "Αναλογία  πληρωμών ως προς προϋπολογισμό"@el ;
-            rdfs:isDefinedBy "http://purl.org/vocab/vfp#" ;
-            rdfs:label "Completion"@en ,
-                       "Ποσοστό ολοκλήρωσης"@el .
+                         "Αναλογία πληρωμών ως προς προϋπολογισμό"@el ;
+            rdfs:isDefinedBy <http://purl.org/vocab/vfp#> ;
+            rdfs:label "completion"@en ,
+                       "ποσοστό ολοκλήρωσης"@el .
 
 
 ###  http://purl.org/vocab/vfp#contracts
@@ -181,9 +197,9 @@ xsd:date rdf:type rdfs:Datatype .
            rdfs:range xsd:decimal ;
            rdfs:comment "The project's contract amount"@en ,
                         "Το ποσό των συμβάσεων του έργου που έχουν υπογραφεί"@el ;
-           rdfs:isDefinedBy "http://purl.org/vocab/vfp#" ;
-           rdfs:label "Contracts"@en ,
-                      "Συμβάσεις"@el .
+           rdfs:isDefinedBy <http://purl.org/vocab/vfp#> ;
+           rdfs:label "contracts"@en ,
+                      "συμβάσεις"@el .
 
 
 ###  http://purl.org/vocab/vfp#description
@@ -192,9 +208,9 @@ xsd:date rdf:type rdfs:Datatype .
              rdfs:range rdfs:Literal ;
              rdfs:comment "Detailed description of the project"@en ,
                           "Λεπτομερής περιγραφή του έργου"@el ;
-             rdfs:isDefinedBy "http://purl.org/vocab/vfp#" ;
-             rdfs:label "Description"@en ,
-                        "Περιγραφή"@el .
+             rdfs:isDefinedBy <http://purl.org/vocab/vfp#> ;
+             rdfs:label "description"@en ,
+                        "περιγραφή"@el .
 
 
 ###  http://purl.org/vocab/vfp#endDate
@@ -203,9 +219,9 @@ xsd:date rdf:type rdfs:Datatype .
          rdfs:range xsd:date ;
          rdfs:comment "End date of the project"@en ,
                       "Ημερομηνία λήξης του έργου"@el ;
-         rdfs:isDefinedBy "http://purl.org/vocab/vfp#" ;
-         rdfs:label "End date"@en ,
-                    "Ημερομηνία λήξης"@el .
+         rdfs:isDefinedBy <http://purl.org/vocab/vfp#> ;
+         rdfs:label "end date"@en ,
+                    "ημερομηνία λήξης"@el .
 
 
 ###  http://purl.org/vocab/vfp#payments
@@ -214,9 +230,9 @@ xsd:date rdf:type rdfs:Datatype .
           rdfs:range xsd:decimal ;
           rdfs:comment "The amount of the payments of the project"@en ,
                        "Το ποσό των μέχρι πληρωμών που έχουν γίνει στο έργο"@el ;
-          rdfs:isDefinedBy "http://purl.org/vocab/vfp#" ;
-          rdfs:label "Payments"@en ,
-                     "Πληρωμές"@el .
+          rdfs:isDefinedBy <http://purl.org/vocab/vfp#> ;
+          rdfs:label "payments"@en ,
+                     "πληρωμές"@el .
 
 
 ###  http://purl.org/vocab/vfp#startDate
@@ -225,9 +241,9 @@ xsd:date rdf:type rdfs:Datatype .
            rdfs:range xsd:date ;
            rdfs:comment "Date the project started"@en ,
                         "Ημερομηνία έναρξης του έργου"@el ;
-           rdfs:isDefinedBy "http://purl.org/vocab/vfp#" ;
-           rdfs:label "Start date"@en ,
-                      "Ημερομηνία έναρξης"@el .
+           rdfs:isDefinedBy <http://purl.org/vocab/vfp#> ;
+           rdfs:label "start date"@en ,
+                      "ημερομηνία έναρξης"@el .
 
 
 ###  http://purl.org/vocab/vfp#statusDate
@@ -236,9 +252,9 @@ xsd:date rdf:type rdfs:Datatype .
             rdfs:range xsd:date ;
             rdfs:comment "Project status evaluation date"@en ,
                          "Ημερομηνία εκτίμησης κατάστασης έργου"@el ;
-            rdfs:isDefinedBy "http://purl.org/vocab/vfp#" ;
-            rdfs:label "Status date"@en ,
-                       "Ημερομηνία κατάστασης"@el .
+            rdfs:isDefinedBy <http://purl.org/vocab/vfp#> ;
+            rdfs:label "status date"@en ,
+                       "ημερομηνία κατάστασης"@el .
 
 
 ###  http://purl.org/vocab/vfp#statusReport
@@ -247,20 +263,20 @@ xsd:date rdf:type rdfs:Datatype .
               rdfs:range rdfs:Literal ;
               rdfs:comment "Project status evalutation report"@en ,
                            "Εκτίμηση κατάστασης έργου"@el ;
-              rdfs:isDefinedBy "http://purl.org/vocab/vfp#" ;
-              rdfs:label "Status report"@en ,
-                         "Εκτίμηση κατάστασης"@el .
+              rdfs:isDefinedBy <http://purl.org/vocab/vfp#> ;
+              rdfs:label "status report"@en ,
+                         "εκτίμηση κατάστασης"@el .
 
 
 ###  http://purl.org/vocab/vfp#title
 :title rdf:type owl:DatatypeProperty ;
        rdfs:domain :Project ;
        rdfs:range rdfs:Literal ;
-       rdfs:comment "The project's title"@en ,
+       rdfs:comment "Title of the project"@en ,
                     "Ο τίτλος του έργου"@el ;
-       rdfs:isDefinedBy "http://purl.org/vocab/vfp#" ;
+       rdfs:isDefinedBy <http://purl.org/vocab/vfp#> ;
        rdfs:label "title"@en ,
-                  "Τίτλος"@el .
+                  "τίτλος"@el .
 
 
 #################################################################
@@ -273,20 +289,20 @@ dbo:Place rdf:type owl:Class .
 
 ###  http://purl.org/vocab/vfp#Document
 :Document rdf:type owl:Class ;
-          rdfs:subClassOf foaf:Document ;
+          rdfs:subClassOf <http://xmlns.com/foaf/0.1/Document> ;
           rdfs:comment "Documents, images or URLs associated with the project"@en ,
                        "Έγγραφα, εικόνες ή ιστοσελίδες σχετικά με το έργο"@el ;
-          rdfs:isDefinedBy "http://purl.org/vocab/vfp#" ;
+          rdfs:isDefinedBy <http://purl.org/vocab/vfp#> ;
           rdfs:label "Document"@en ,
                      "Έγγραφο"@el .
 
 
 ###  http://purl.org/vocab/vfp#Organization
 :Organization rdf:type owl:Class ;
-              rdfs:subClassOf foaf:Organization ;
+              rdfs:subClassOf <http://www.w3.org/2006/vcard/ns#Organization> ;
               rdfs:comment "Organization associated with the project"@en ,
                            "Οργανισμός που σχετίζεται με το έργο"@el ;
-              rdfs:isDefinedBy "http://purl.org/vocab/vfp#" ;
+              rdfs:isDefinedBy <http://purl.org/vocab/vfp#> ;
               rdfs:label "Organization"@en ,
                          "Οργανισμός"@el .
 
@@ -296,17 +312,17 @@ dbo:Place rdf:type owl:Class .
        rdfs:subClassOf dbo:Place ;
        rdfs:comment "Place associated with the project"@en ,
                     "Τοποθεσία που σχετίζεται με το έργο"@el ;
-       rdfs:isDefinedBy "http://purl.org/vocab/vfp#" ;
+       rdfs:isDefinedBy <http://purl.org/vocab/vfp#> ;
        rdfs:label "Place"@en ,
                   "Τοποθεσία"@el .
 
 
 ###  http://purl.org/vocab/vfp#Project
 :Project rdf:type owl:Class ;
-         rdfs:subClassOf foaf:Project ;
+         rdfs:subClassOf <http://xmlns.com/foaf/0.1/Project> ;
          rdfs:comment "Financial or fiscal project"@en ,
                       "Οικονομικό ή δημοσιονομικό έργο"@el ;
-         rdfs:isDefinedBy "http://purl.org/vocab/vfp#" ;
+         rdfs:isDefinedBy <http://purl.org/vocab/vfp#> ;
          rdfs:label "Project"@en ,
                     "Έργο"@el .
 
@@ -315,16 +331,16 @@ dbo:Place rdf:type owl:Class .
 skos:Concept rdf:type owl:Class .
 
 
+###  http://www.w3.org/2006/vcard/ns#Organization
+<http://www.w3.org/2006/vcard/ns#Organization> rdf:type owl:Class .
+
+
 ###  http://xmlns.com/foaf/0.1/Document
-foaf:Document rdf:type owl:Class .
-
-
-###  http://xmlns.com/foaf/0.1/Organization
-foaf:Organization rdf:type owl:Class .
+<http://xmlns.com/foaf/0.1/Document> rdf:type owl:Class .
 
 
 ###  http://xmlns.com/foaf/0.1/Project
-foaf:Project rdf:type owl:Class .
+<http://xmlns.com/foaf/0.1/Project> rdf:type owl:Class .
 
 
 ###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
